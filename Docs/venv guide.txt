@@ -1,0 +1,25 @@
+How to start a virtual environment in VSC on Windows.
+
+1.- Disable the safety policies typing in terminal:
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+2.- Build a new environment with python typing in terminal:
+Note: this will be required to have installed venv library (pip install venv).
+python -m venv env
+
+3.- Activate the virtual environment typing in terminal:
+env\Scripts\activate
+
+4.- to deactivate the virtual environment just type in terminal:
+deactivate
+
+
+How to start a virtual environment in Bash on Linux
+
+1.- Build a new environment with python typing in Bash terminal:
+Note: this will be required to have installed venv library (sudo apt install python3-venv).
+
+python3 -m venv env
+
+2.- Activate the virtual environment typing in Bash terminal:
+source env/bin/activate
