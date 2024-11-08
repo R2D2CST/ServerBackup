@@ -1,5 +1,4 @@
 # Native Python Libraries.
-import time
 from datetime import datetime
 
 # Third Party Libraries.
@@ -16,3 +15,6 @@ def timeStamp() -> str:
     Raises: None
     """
     return datetime.strftime(format="%Y-%m-%d %H:%M")
+
+
+
