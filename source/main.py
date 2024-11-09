@@ -8,8 +8,8 @@ import zipfile
 from tqdm import tqdm
 
 # Self Built Libraries.
-from Functions.OSFunctions import askPath, askNumber, askYesNo, makeBackup
-from Functions.TimeFunctions import timeStamp
+from functions.OSFunctions import askPath, askNumber, askYesNo
+from functions.TimeFunctions import timeStamp
 
 
 class main:

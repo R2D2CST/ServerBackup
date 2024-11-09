@@ -1,4 +1,7 @@
-# Virtual Enviorment
+# Outut program fails.
+.output/*
+
+# Virtual Enviorment.
 env/*
 
 # Byte-compiled / optimized / DLL files
