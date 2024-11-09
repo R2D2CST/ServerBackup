@@ -14,7 +14,4 @@ def timeStamp() -> str:
         > timeStamp (str): actual date time with hours and minutes.
     Raises: None
     """
-    return datetime.strftime(format="%Y-%m-%d %H:%M")
-
-
-
+    return datetime.now().strftime(format="%Y-%m-%d_%H-%M")

@@ -7,7 +7,7 @@
   },
   {
    "optionDest": "filenames",
-   "value": "C:/Users/R2d2c/Documents/ServerBackup/src/main.py"
+   "value": "C:/Users/R2d2c/Documents/ServerBackup/source/main.py"
   },
   {
    "optionDest": "onefile",
@@ -19,7 +19,7 @@
   },
   {
    "optionDest": "icon_file",
-   "value": "C:/Users/R2d2c/Documents/ServerBackup/src/assets/crown.ico"
+   "value": "C:/Users/R2d2c/Documents/ServerBackup/source/assets/crown.ico"
   },
   {
    "optionDest": "name",
@@ -63,11 +63,11 @@
   },
   {
    "optionDest": "datas",
-   "value": "C:/Users/R2d2c/Documents/ServerBackup/src/Functions;Functions/"
+   "value": "C:/Users/R2d2c/Documents/ServerBackup/source/assets;assets/"
   },
   {
    "optionDest": "datas",
-   "value": "C:/Users/R2d2c/Documents/ServerBackup/src/assets;assets/"
+   "value": "C:/Users/R2d2c/Documents/ServerBackup/source/functions;functions/"
   }
  ],
  "nonPyinstallerOptions": {

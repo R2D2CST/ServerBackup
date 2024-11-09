@@ -43,6 +43,8 @@ class main:
         print()
         print("_____________________________________________________________")
         print("| WELCOME TO THE AUTO BACK UP BUILDER (VER 1.0.0)           |")
+        print("| Made by QFB. José Arturo Castella Lasaga                  |")
+        print("| support at qfbarturocastella@gmail.com                    |")
         print("_____________________________________________________________")
         print()
         pass
@@ -59,6 +61,7 @@ class main:
     def daemonEscapeFunction(self):
         input("Press Enter key to end backup.")
         self.eventThread.set()
+        print("Waiting for a safe termination ...")
         pass
 
     def backupOrigin(self) -> None:
@@ -92,13 +95,15 @@ class main:
         """
         while True:
 
-            print("Please enter the backup frequency in hours (h)")
+            print("Please enter the backup frequency in hours (min)")
             self.frequency = (
-                askNumber()
+                60 * askNumber()
             )  # We convert hours into minutes and into seconds.
-            print("Please enter the initial delay in hours (h)\nIf None please type 0")
+            print(
+                "Please enter the initial delay in hours (min)\nIf None please type 0"
+            )
             self.delay = (
-                askNumber()
+                60 * askNumber()
             )  # 60*60* We convert hours into minutes and into seconds.
 
             if self.frequency != None and self.delay != None:
@@ -179,28 +184,30 @@ class main:
         while not self.eventThread.is_set():
 
             # We get the number of files we are about to copy.
-            if not os.path.isdir(self.backupOrigin):
+            if not os.path.isdir(self.pathToBackup):
                 raise f"Error backup origin is not a valid path: {self.backupOrigin}"
-            if not os.path.isdir(self.backupDestination):
+            if not os.path.isdir(self.outputPath):
                 raise f"Error backup destination is not a valid path: {self.backupDestination}"
-
-            # We estimate the total amount of files we are going to backup.
-            fileList = [
-                f
-                for f in os.listdir(self.backupOrigin)
-                if os.path.isfile(os.path.join(self.backupOrigin, f))
-            ]
-            fileCount = len(fileList)
-            if fileCount == 0:
-                print(f"No files in origin path to make a backup: {self.backupOrigin}")
-                return False
 
             if not self.overwrite:
                 backupFileName = f"backup {timeStamp()}.zip"
             else:
                 backupFileName = "backup.zip"
 
-            backupFilePath = os.path.join(self.backupDestination, backupFileName)
+            # We estimate the total amount of files we are going to backup.
+            fileList = [
+                os.path.join(root, file)
+                for root, _, files in os.walk(self.pathToBackup)
+                for file in files
+            ]
+
+            backupFilePath = os.path.join(self.outputPath, backupFileName)
+
+            fileCount = len(fileList)
+            if fileCount == 0:
+                print(f"No files in origin path to make a backup: {self.pathToBackup}")
+                time.sleep(self.frequency)
+                continue
 
             with zipfile.ZipFile(backupFilePath, "w") as backupZip:
                 # We initiate the progress bar with the number of files to copy.
@@ -210,7 +217,7 @@ class main:
                     unit="file",
                     colour="green",
                 ):
-                    filePath = os.path.join(self.backupOrigin, file)
+                    filePath = os.path.join(self.pathToBackup, file)
                     backupZip.write(filePath, arcname=file)
 
             print("backup successful.")

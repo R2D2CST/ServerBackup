@@ -1,5 +1,5 @@
 # Outut program fails.
-.output/*
+source/output/*
 
 # Virtual Enviorment.
 env/*
