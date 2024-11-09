@@ -34,6 +34,7 @@ def askNumber() -> int:
         number: str = input("Please enter a round number: ")
         try:
             number: int = int(number)
+            return number
         except TypeError:
             print("Must be a round number (1, 2, 3 ...)")
             continue
@@ -49,12 +50,10 @@ def askYesNo() -> bool:
     """
     while True:
         question: str = input("Please type (Y) for Yes or type (N) for No: ")
-        if not ("y" or "n") in question.lower():
-            continue
-        if len(question) > 1:
-            continue
         if question.lower() == "y":
             return True
-        if question.lower() == "n":
+        elif question.lower() == "n":
             return False
+        else:
+            continue
     pass
